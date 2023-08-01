@@ -8,9 +8,12 @@ import {
 } from "@mui/material";
 import "./App.scss";
 import { light } from "@mui/material/styles/createPalette";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
 
 const theme = createTheme({
-  palette: { // Correção do nome do atributo "palette"
+  palette: {
+    // Correção do nome do atributo "palette"
     primary: {
       main: "#25283D",
     },
@@ -45,42 +48,57 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className={`container ${scrolling ? "scrolling" : ""}`}>
-        <Typography color={"info.main"} fontSize={scrolling ? "17px": "20px"}>
+        <FontAwesomeIcon icon={faMoon} />
+        <Typography
+          color={"info.main"}
+          display={scrolling ? "block" : "none"}
+          fontSize={scrolling ? "17px" : "20px"}
+        >
+          Seu conteúdo aqui
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            pr: 2,
+          }}
+        >
+          <Typography>Sobre Mim</Typography>
+          <Typography>Linguagens</Typography>
+          <Typography>Projetos</Typography>
+        </Box>
+      </div>
+      <div className="title-container">
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
+          Seu conteúdo aqui
+        </Typography>
+        <Typography color={"info.main"} variant="h1">
           Seu conteúdo aqui
         </Typography>
       </div>
-      <div className="title-container">
-
-      <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        <Typography color={"info.main"} variant="h1">
-          Seu conteúdo aqui
-        </Typography>
-        </div>
-       
-
     </ThemeProvider>
   );
 }
