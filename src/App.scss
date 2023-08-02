@@ -18,7 +18,7 @@ body {
   height: 80px;
   padding-left: 10px;
   font-size: 20px;
-  background-color: rgba(155, 155, 155, 0);
+  background-color: rgba(72, 49, 71, 0);
   backdrop-filter: blur(20px);
   z-index: 1000;
   display: flex;
@@ -26,12 +26,13 @@ body {
   align-items: center;
   transition: height 0.3s;
   transition: height 0.3s, font-family 0.3s;
+  border-bottom: 1px solid white;
 }
 
 .container.scrolling {
   height: 50px;
   font-size: 17px;
-  background-color: rgba(155, 155, 155, 0);
+  background-color: rgba(72, 49, 71, 0);
 }
 .title-container {
   padding-top: 80px;
@@ -40,4 +41,40 @@ body {
   width: 100vw;
   height: 100vh;
   background: #7a918d;
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden; /* Adicione esta linha para esconder o conteúdo */
+  transition: opacity 0.3s, visibility 0s 0.3s; /* Ajuste a transição conforme necessário */
+}
+.appear {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0s;
+}
+.transition {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.profile_ft {
+  width: 100px; /* Defina o tamanho da imagem */
+  height: 100px;
+  border: 3px solid #fff; /* Cor e largura da borda */
+  border-radius: 50%; /* Tornar a imagem circular */
+  overflow: hidden;
+  display: inline-block;
+}
+.profile_ft img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajustar o tamanho da imagem */
 }
