@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1000" height="1000" viewBox="0 0 1000 1000" xml:space="preserve">
+  <desc>Created with Fabric.js 3.5.0</desc>
+  <defs>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="#0c0c0c"/>
+  <g transform="matrix(13.0497 0 0 13.0497 498.4039 498.7519)" id="434092">
+    <linearGradient id="SVGID_3" gradientUnits="objectBoundingBox" gradientTransform="matrix(1 0 0 1 -5.9687 1.5126)" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" style="stop-color:rgb(248,117,55);stop-opacity: 1"/>
+      <stop offset="100%" style="stop-color:rgb(123,45,253);stop-opacity: 1"/>
+    </linearGradient>
+    <linearGradient id="SVGID_4" gradientUnits="objectBoundingBox" gradientTransform="matrix(1 0 0 1 -5.9687 1.5126)" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" style="stop-color:rgb(248,117,55);stop-opacity: 1"/>
+      <stop offset="100%" style="stop-color:rgb(123,45,253);stop-opacity: 1"/>
+    </linearGradient>
+    <path style="stroke: url(#SVGID_4); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: url(#SVGID_3); fill-rule: nonzero; opacity: 1; animation: rotate 20s linear infinite;" vector-effect="non-scaling-stroke" transform=" translate(5.9687, -1.5126)" d="M 13 -21 C 17.5 -20 22.1 -17.7 25.7 -14 C 29.3 -10.3 31.9 -5.1 31.9 0 C 32 5.2 29.6 10.4 27.3 16.5 C 25.1 22.5 23 29.4 18.5 30.8 C 14 32.3 7 28.3 1.4 25.8 C -4.1 23.3 -8.2 22.3 -13.7 21.4 C -19.2 20.6 -26.1 19.8 -32.1 16.2 C -38.1 12.7 -43.3 6.3 -43.8 -0.3 C -44.3 -6.9 -40.1 -13.8 -35.1 -19.1 C -30 -24.4 -24.2 -28.1 -18.2 -28.1 C -12.2 -28.2 -6.1 -24.7 -0.9 -23.1 C 4.3 -21.5 8.6 -21.9 13 -21 Z" stroke-linecap="round"/>
+  </g>
+  <style>
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</svg>

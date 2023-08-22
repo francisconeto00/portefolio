@@ -1,22 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Box,
   Container,
   Typography,
   createTheme,
   ThemeProvider,
-  AppBar,
-  Toolbar,
+  Grid,
   Button,
   MenuItem,
   Menu,
   Avatar,
+  Divider,
+  Card,
+  CardContent,
 } from "@mui/material";
 import img from "../src/assets/IMG_20220311_210424_654__01-modified.png";
 import Fade from "@mui/material/Fade";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faBars } from "@fortawesome/free-solid-svg-icons";
+import next from "../src/assets/nextjs-logo.png";
+import js from "../src/assets/javascript-logo.png";
+import react from "../src/assets/react.png";
+import java from "../src/assets/java-logo.png";
+import kotlin from "../src/assets/kotlin.png";
+import py from "../src/assets/python-logo.avif";
+import ts from "../src/assets/ts-logo.png";
+import css from "../src/assets/css.png";
+import html from "../src/assets/HTML5.png";
+import sc from "../src/assets/styled-comp.png";
+import scss from "../src/assets/scss.png";
+import c from "../src/assets/c-logo.png";
+import flask from "../src/assets/flask.png";
+import { MantineProvider } from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
+import { useMediaQuery } from "@mantine/hooks";
+
+import Autoplay from "embla-carousel-autoplay";
 
 const theme = createTheme({
   palette: {
@@ -34,29 +54,28 @@ const theme = createTheme({
 });
 
 function App() {
+  const about = useRef(null);
+  const tecs = useRef(null);
+  const proj = useRef(null);
   const [scrolling, setScrolling] = useState(false);
-  const [showTypography, setShowTypography] = useState(true);
-
+  const autoplay = useRef(Autoplay({ delay: 2000 }));
   useEffect(() => {
     const handleScroll = () => {
-      const appBarHeight = 10; // Altura aproximada da AppBar em pixels
+      const appBarHeight = 50;
       const scrolled = window.scrollY;
-
       if (scrolled > appBarHeight) {
         setScrolling(true);
-        setShowTypography(false);
       } else {
         setScrolling(false);
-        setShowTypography(true);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -65,98 +84,457 @@ function App() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  function smoothScrollTo(ref) {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   return (
-    <ThemeProvider theme={theme}>
-      <div className={`container ${scrolling ? "scrolling" : ""}`}>
-        <Typography
-          ml={4}
-          sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
-        >
-          <FontAwesomeIcon icon={faMoon} />
-          <Typography
-            ml={12}
-            align="center !important"
-            color="white"
-            display={scrolling ? "block" : "none"}
-            fontSize={scrolling ? "17px" : "20px"}
-          >
-            <b>Francisco Neto</b>
-          </Typography>
-        </Typography>
-
-        <Box
-          sx={{
-            display: { md: "flex", xs: "none" },
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            pr: 2,
-            mr: 0,
-          }}
-        >
-          <Typography mr={4}>Sobre Mim</Typography>
-          <Typography mr={4}>Linguagens</Typography>
-          <Typography mr={4}>Projetos</Typography>
-        </Box>
-        <Box sx={{ display: { md: "none", xs: "flex" } }}>
-          <Button
-            id="fade-button"
-            aria-controls={open ? "fade-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          >
-            <FontAwesomeIcon icon={faBars} />
-          </Button>
-          <Menu
-            id="fade-menu"
-            MenuListProps={{
-              "aria-labelledby": "fade-button",
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            TransitionComponent={Fade}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
-        </Box>
-      </div>
-      <div className="title-container">
-        <Container sx={{ height: "100%" }}>
-          <Typography
-            mt={10}
-            color={"info.main"}
-            variant="h4"
-            className={`typography ${scrolling ? "transition" : ""} ${
-              showTypography ? "appear" : "hidden"
-            }`}
-          >
-            Francisco Neto
-          </Typography>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <ThemeProvider theme={theme}>
+        <div className={`container ${scrolling ? "scrolling" : ""}`}>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              border: "1px solid red",
-              borderRadius: "10px",
+              alignItems: "center",
+              ml: {
+                xs: 1,
+                sm: 1,
+                md: 4,
+                ls: 4,
+                xl: 4,
+              },
             }}
           >
-            <Box>
-              <Avatar
-                sx={{ width: 250, height: 250, border: "1px solid red" }}
-                alt="Remy Sharp"
-                src={img}
-              />
-            </Box>
+            <FontAwesomeIcon icon={faMoon} color="#efb8a3" />
+
+            <Typography
+              sx={{
+                ml: {
+                  xs: 2,
+                  sm: 2,
+                  md: 12,
+                  ls: 12,
+                  xl: 12,
+                },
+              }}
+              align="center"
+              color="white"
+              fontSize="20px"
+            >
+              <b>Francisco Neto</b>
+            </Typography>
           </Box>
-        </Container>
-      </div>
-    </ThemeProvider>
+
+          <Box
+            sx={{
+              display: { md: "flex", xs: "none" },
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              pr: 2,
+              mr: 0,
+              color: "white",
+            }}
+          >
+            <Button
+              mr={4}
+              onClick={() => smoothScrollTo(about)}
+              sx={{ color: "white" }}
+            >
+              {" "}
+              Sobre Mim
+            </Button>
+
+            <Button
+              mr={4}
+              onClick={() => smoothScrollTo(tecs)}
+              sx={{ color: "white" }}
+            >
+              Linguagens
+            </Button>
+            <Button
+              mr={4}
+              onClick={() => smoothScrollTo(proj)}
+              sx={{ color: "white" }}
+            >
+              Projetos
+            </Button>
+          </Box>
+          <Box sx={{ display: { md: "none", xs: "flex" } }}>
+            <Button
+              id="fade-button"
+              aria-controls={open ? "fade-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <FontAwesomeIcon icon={faBars} />
+            </Button>
+            <Menu
+              id="fade-menu"
+              MenuListProps={{
+                "aria-labelledby": "fade-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              TransitionComponent={Fade}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
+          </Box>
+        </div>
+        <div className="title-container" ref={about}>
+          <Container
+            sx={{
+              py: {
+                xs: 10,
+                sm: 10,
+              },
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <Box
+              mt={3}
+              sx={{
+                background: "rgba(255, 255, 255, 0.9)",
+                borderRadius: "10px",
+                boxShadow: {
+                  xs: "none",
+                  sm: "none",
+                  md: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
+                  ls: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
+                  xl: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
+                },
+                display: "flex",
+                flexDirection: {
+                  xs: "column",
+                  sm: "column",
+                  md: "row",
+                  ls: "row",
+                  xl: "row",
+                },
+                py: 4,
+                px: 2,
+                width: "100%",
+                justifyContent: {
+                  xs: "center",
+                  sm: "center",
+                  md: "space-between",
+                  ls: "space-between",
+                  xl: "space-between",
+                },
+                alignItems: "center",
+              }}
+            >
+              <Box>
+                <Avatar
+                  sx={{
+                    width: 300,
+                    height: 300,
+                  }}
+                  alt="profile"
+                  src={img}
+                />
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "100%",
+                    md: "70%",
+                    ls: "70%",
+                    xl: "70%",
+                  },
+                }}
+              >
+                <Typography align="center" mb={2} color="black" variant="h4">
+                  <b>Sobre Mim</b>
+                </Typography>
+                <Typography fontSize={20}>
+                  O meu nome é Francisco Neto, tenho 23 anos e sou natural de
+                  Santo Tirso. Sou apaixonado por tecnologia e desenvolvimento
+                  de software. Atualmente, trabalho como desenvolvedor frontend
+                  freelancer em projetos baseados em React.js.
+                </Typography>
+                <Typography mt={1} fontSize={20}>
+                  A minha formação académica passa pela Universidade do Minho,
+                  onde me encontro no último ano do Mestrado em Engenharia de
+                  Telecomunicações e Informática. Foi neste curso que desenvolvi
+                  o gosto pela programação, aprendizagem continua e diversos
+                  conhecimentos em redes e comunicações.
+                </Typography>
+              </Box>
+            </Box>
+          </Container>
+        </div>
+
+        <div className="languages " ref={tecs}>
+          <Container
+            sx={{
+              py: {
+                xs: 10,
+                sm: 10,
+              },
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Grid
+              sx={{
+                flexGrow: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                color: "white",
+              }}
+              container
+              spacing={{ xs: 6, sm: 10, md: 12, ls: 12, xl: 12 }}
+            >
+              <Grid item>
+                <img src={next} alt="next" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={react} alt="react" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={js} alt="js" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={ts} alt="ts" width="100px" />
+              </Grid>
+              <Grid item>
+                <img className="kimg" src={kotlin} alt="kotlin" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={py} alt="py" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={scss} alt="scss" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={sc} alt="sc" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={css} alt="css" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={html} alt="html" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={java} alt="java" width="100px" />
+              </Grid>
+              <Grid item>
+                <img src={c} alt="c" width="100px" />
+              </Grid>
+            </Grid>
+          </Container>
+        </div>
+
+        <div className="projects" ref={proj}>
+          <Carousel
+            slideSize="40%"
+            height={480}
+            slideGap="sm"
+            controlsOffset="xs"
+            dragFree
+            align={"start"}
+            withIndicators
+            w={{
+              base: "90%",
+              xs: "90%",
+              sm: "90%",
+              md: "90%",
+              lg: "90%",
+              xl: "70%",
+            }}
+            styles={{
+              control: {
+                background: "rgba(123, 45, 253, 1)",
+                opacity: "0.5",
+                "&[data-inactive]": {
+                  opacity: 0,
+                  cursor: "default",
+                },
+              },
+            }}
+            breakpoints={[
+              { maxWidth: "md", slideSize: "50%" },
+              { maxWidth: "sm", slideSize: "100%", slideGap: "0" },
+            ]}
+          >
+            {projects.map((p, index) => (
+              <Carousel.Slide key={p.title + index}>
+                <Card
+                  sx={{
+                    height: "90%",
+                  }}
+                >
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      height: "100%",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Box>
+                      <Typography align="center" variant="h6" color={"black"}>
+                        {p.title}
+                      </Typography>
+                      <Typography>{p.discription}</Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      {p.languages.map((l, index) => (
+                        <img
+                          alt={l.name}
+                          key={l.name + index}
+                          src={l.img}
+                          width="30px"
+                        />
+                      ))}
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </div>
+      </ThemeProvider>
+    </MantineProvider>
   );
 }
 
 export default App;
+const projects = [
+  {
+    title: "Weather App",
+    discription:
+      "Webapp de monitorização meteriologica usando com React.js e com a API oficial do IPMA https://api.ipma.pt/",
+    languages: [
+      {
+        name: "React.js",
+        img: react,
+      },
+      {
+        name: "HTML",
+        img: html,
+      },
+      {
+        name: "Styled Components",
+        img: sc,
+      },
+    ],
+  },
+  {
+    title: "PITI project",
+    discription:
+      "Projeto no ambito da disciplina de Projeto Integrador de Telecomunicações e Informatica, com o objetivo de criar uma ligação unidirecional por link otico, foram utilizados componentes eletronicos e arduinos a nivel de hardware e C, Pyhton, Flask e React.js para o software de chat.",
+    languages: [
+      {
+        name: "React.js",
+        img: react,
+      },
+      {
+        name: "HTML",
+        img: html,
+      },
+      {
+        name: "CSS",
+        img: css,
+      },
+      {
+        name: "Python",
+        img: py,
+      },
+      {
+        name: "C",
+        img: c,
+      },
+    ],
+  },
+  {
+    title: "LTI project",
+    discription:
+      "Projeto no ambito da disciplina de Laboratorio de Telecomunicações e Informatica, com o objetivo de monitorar temperaturas de varios sensores que poderiam estar espalhados por varios compartimentos de um recinto mostrando-os posteriormente numa dashboard de um website. Foram utilizados varios componentes eletronicos, arduinos a nivel de hardware e C, Flask, HTML, CSS e Javascript a nivel de software.",
+    languages: [
+      {
+        name: "Javascript",
+        img: js,
+      },
+      {
+        name: "HTML",
+        img: html,
+      },
+      {
+        name: "CSS",
+        img: css,
+      },
+      {
+        name: "Flask",
+        img: flask,
+      },
+      {
+        name: "C",
+        img: c,
+      },
+    ],
+  },
+  {
+    title: "Chat por Radio Frequencia",
+    discription:
+      "Projeto no ambito da disciplina Emulaçao e Simulaçao de Redes de Telecomunicações, com o objetivo de criar um chat fiavel por radiofrequencia, foram utilizados componentes eletronicos e arduinos a nivel de hardware e C, Pyhton para o software de chat.",
+    languages: [
+      {
+        name: "Python",
+        img: py,
+      },
+      {
+        name: "C",
+        img: c,
+      },
+    ],
+  },
+  {
+    title: "Money.inc App",
+    discription:
+      "Projeto no ambitp da disciplina de Paradigmas da Programação II, com o objetivo de criar uma aplicação android para um banco ficticio, em que o utilizador conseguia ver saldo, transferencias, extrato bancario assim como efetuar pagamentos e transferencias.",
+    languages: [
+      {
+        name: "Kotlin",
+        img: kotlin,
+      },
+    ],
+  },
+  {
+    title: "Covid-19",
+    discription:
+      "Projeto no ambito da disciplina de Paradigmas da Programação I, é uma aplicação que calculava e registava infeções por COVID-19 numa determinada zona. Java foi a linguagem utilizada.",
+    languages: [
+      {
+        name: "Java",
+        img: java,
+      },
+    ],
+  },
+];

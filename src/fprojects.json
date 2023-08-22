@@ -1,0 +1,46 @@
+[{
+    "title": "Recipes",
+    "discription": "Aplicação de busca por receitas utilizando varias API's de receitas.",
+    "languages": [
+      {
+        "name": "Next.js",
+        "color": ""
+      },
+      {
+        "name": "HTML",
+        "color": ""
+      },
+      {
+        "name": "Tailwind",
+        "color": ""
+      },
+      {
+        "name": "MUI",
+        "color": ""
+      }
+    ]
+  },{
+    "title": "ShopingList",
+    "discription": "Aplicação de auxilio e registo para as compras de supermercados.",
+    "languages": [
+      {
+        "name": "Next.js",
+        "color": ""
+      },
+      {
+        "name": "HTML",
+        "color": ""
+      },
+      {
+        "name": "Tailwind",
+        "color": ""
+      },
+      {
+        "name": "MUI",
+        "color": ""
+      }, {
+        "name":"Strappi",
+        "color" :""
+      }
+    ]
+  }]

@@ -1,0 +1,107 @@
+
+[
+  {
+    "title": "Weather App",
+    "discription": "Webapp de monitorização meteriologica usando com React.js e com a API oficial do IPMA https://api.ipma.pt/",
+    "languages": [
+      {
+        "name": "React.js",
+        "img": ""
+      },
+      {
+        "name": "HTML",
+        "img": ""
+      },
+      {
+        "name": "Styled Components",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "title": "PITI project",
+    "discription": "Projeto no ambito da disciplina de Projeto Integrador de Telecomunicações e Informatica, com o objetivo de criar uma ligação unidirecional por link otico, foram utilizados componentes eletronicos e arduinos a nivel de hardware e C, Pyhton, Flask e React.js para o software de chat.",
+    "languages": [
+      {
+        "name": "React.js",
+        "img": "react"
+      },
+      {
+        "name": "HTML",
+        "img": html,
+      },
+      {
+        "name": "CSS",
+        "img": css,
+      },
+      {
+        "name": "Python",
+        "img": "py"
+      },
+      {
+        "name": "C",
+        "img": "c"
+      }
+    ]
+  },
+  {
+    "title": "LTI project",
+    "discription": "Projeto no ambito da disciplina de Laboratorio de Telecomunicações e Informatica, com o objetivo de monitorar temperaturas de varios sensores que poderiam estar espalhados por varios compartimentos de um recinto mostrando-os posteriormente numa dashboard de um website. Foram utilizados varios componentes eletronicos, arduinos a nivel de hardware e C, Flask, HTML, CSS e Javascript a nivel de software.",
+    "languages": [
+      {
+        "name": "Javascript",
+        "img": ""
+      },
+      {
+        "name": "HTML",
+        "img": ""
+      },
+      {
+        "name": "CSS",
+        "img": ""
+      },
+      {
+        "name": "Flask",
+        "img": ""
+      },
+      {
+        "name": "C",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "title": "Chat por Radio Frequencia",
+    "discription": "Projeto no ambito da disciplina Emulaçao e Simulaçao de Redes de Telecomunicações, com o objetivo de criar um chat fiavel por radiofrequencia, foram utilizados componentes eletronicos e arduinos a nivel de hardware e C, Pyhton para o software de chat.",
+    "languages": [
+      {
+        "name": "Python",
+        "img": ""
+      },
+      {
+        "name": "C",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "title": "Money.inc App",
+    "discription": "Projeto no ambitp da disciplina de Paradigmas da Programação II, com o objetivo de criar uma aplicação android para um banco ficticio, em que o utilizador conseguia ver saldo, transferencias, extrato bancario assim como efetuar pagamentos e transferencias.",
+    "languages": [
+      {
+        "name": "Kotlin",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "title": "Covid-19",
+    "discription": "Projeto no ambito da disciplina de Paradigmas da Programação I, é uma aplicação que calculava e registava infeções por COVID-19 numa determinada zona. Java foi a linguagem utilizada.",
+    "languages": [
+      {
+        "name": "Java",
+        "img": ""
+      }
+    ]
+  }
+]
