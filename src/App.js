@@ -10,15 +10,18 @@ import {
   MenuItem,
   Menu,
   Avatar,
-  Divider,
   Card,
   CardContent,
+  Select,
+  IconButton,
 } from "@mui/material";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 import img from "../src/assets/IMG_20220311_210424_654__01-modified.png";
 import Fade from "@mui/material/Fade";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import next from "../src/assets/nextjs-logo.png";
 import js from "../src/assets/javascript-logo.png";
 import react from "../src/assets/react.png";
@@ -34,9 +37,10 @@ import c from "../src/assets/c-logo.png";
 import flask from "../src/assets/flask.png";
 import { MantineProvider } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
-import { useMediaQuery } from "@mantine/hooks";
-
-import Autoplay from "embla-carousel-autoplay";
+import { useTranslation } from "react-i18next";
+import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const theme = createTheme({
   palette: {
@@ -54,11 +58,13 @@ const theme = createTheme({
 });
 
 function App() {
+  const { t, i18n } = useTranslation();
   const about = useRef(null);
   const tecs = useRef(null);
   const proj = useRef(null);
   const [scrolling, setScrolling] = useState(false);
-  const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const [lang, setLang] = useState("pt");
+
   useEffect(() => {
     const handleScroll = () => {
       const appBarHeight = 50;
@@ -92,7 +98,10 @@ function App() {
       });
     }
   }
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const handleChangeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setLang(language);
+  };
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <ThemeProvider theme={theme}>
@@ -111,7 +120,38 @@ function App() {
               },
             }}
           >
-            <FontAwesomeIcon icon={faMoon} color="#efb8a3" />
+            <Select
+              sx={{
+                "&:before": {
+                  borderColor: "white", // Cor da borda antes do seletor ser aberto
+                },
+                "&:after": {
+                  borderColor: "white", // Cor da borda após o seletor ser aberto
+                },
+                "&:hover:not(.Mui-disabled):before": {
+                  borderColor: "white", // Cor da borda ao passar o mouse
+                },
+                "& .MuiSelect-icon": {
+                  color: "white", // Cor do ícone
+                },
+                // Estilo do menu suspenso (opcional)
+                "& .MuiMenu-paper": {
+                  backgroundColor: "#333", // Cor de fundo do menu
+                  color: "white", // Cor do texto no menu
+                },
+              }}
+              variant="standard"
+              value={lang}
+              onChange={(e) => handleChangeLanguage(e.target.value)}
+            >
+              <MenuItem value={"pt"}>
+                <span className="fi fi-pt"> </span>
+              </MenuItem>
+
+              <MenuItem value={"en"}>
+                <span className="fi fi-gb"> </span>
+              </MenuItem>
+            </Select>
 
             <Typography
               sx={{
@@ -147,8 +187,7 @@ function App() {
               onClick={() => smoothScrollTo(about)}
               sx={{ color: "white" }}
             >
-              {" "}
-              Sobre Mim
+              {t("about")}
             </Button>
 
             <Button
@@ -156,14 +195,14 @@ function App() {
               onClick={() => smoothScrollTo(tecs)}
               sx={{ color: "white" }}
             >
-              Linguagens
+              {t("tec")}
             </Button>
             <Button
               mr={4}
               onClick={() => smoothScrollTo(proj)}
               sx={{ color: "white" }}
             >
-              Projetos
+              {t("proj")}
             </Button>
           </Box>
           <Box sx={{ display: { md: "none", xs: "flex" } }}>
@@ -173,6 +212,7 @@ function App() {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
+              sx={{ color: "white" }}
             >
               <FontAwesomeIcon icon={faBars} />
             </Button>
@@ -185,10 +225,22 @@ function App() {
               open={open}
               onClose={handleClose}
               TransitionComponent={Fade}
+              PaperProps={{
+                sx: {
+                  backgroundColor: "white",
+                  color: "rgba(123, 45, 253, 1)",
+                },
+              }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={() => smoothScrollTo(about)}>
+                {t("about")}
+              </MenuItem>
+              <MenuItem onClick={() => smoothScrollTo(tecs)}>
+                {t("tec")}
+              </MenuItem>
+              <MenuItem onClick={() => smoothScrollTo(proj)}>
+                {t("proj")}
+              </MenuItem>
             </Menu>
           </Box>
         </div>
@@ -238,7 +290,12 @@ function App() {
                 alignItems: "center",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  border: "3px solid rgba(123, 45, 253, 1)",
+                  borderRadius: "50%",
+                }}
+              >
                 <Avatar
                   sx={{
                     width: 300,
@@ -259,16 +316,21 @@ function App() {
                   },
                 }}
               >
-                <Typography align="center" mb={2} color="black" variant="h4">
-                  <b>Sobre Mim</b>
+                <Typography
+                  align="center"
+                  mb={2}
+                  color="rgba(123, 45, 253, 1)"
+                  fontSize={{ xs: 25, md: 30 }}
+                >
+                  <b>{t("about")}</b>
                 </Typography>
-                <Typography fontSize={20}>
+                <Typography fontSize={{ xs: 15, md: 20 }}>
                   O meu nome é Francisco Neto, tenho 23 anos e sou natural de
                   Santo Tirso. Sou apaixonado por tecnologia e desenvolvimento
                   de software. Atualmente, trabalho como desenvolvedor frontend
                   freelancer em projetos baseados em React.js.
                 </Typography>
-                <Typography mt={1} fontSize={20}>
+                <Typography fontSize={{ xs: 15, md: 20 }}>
                   A minha formação académica passa pela Universidade do Minho,
                   onde me encontro no último ano do Mestrado em Engenharia de
                   Telecomunicações e Informática. Foi neste curso que desenvolvi
@@ -419,6 +481,35 @@ function App() {
               </Carousel.Slide>
             ))}
           </Carousel>
+          <footer>
+            <Container>
+              <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+              >
+                <Grid item>
+                  <IconButton
+                    href="mailto:seuemail@example.com"
+                    target="_blank"
+                  >
+                    <EmailIcon />
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <IconButton href="https://www.linkedin.com/" target="_blank">
+                    <LinkedInIcon />
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <IconButton href="https://www.instagram.com/" target="_blank">
+                    <InstagramIcon />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Container>
+          </footer>
         </div>
       </ThemeProvider>
     </MantineProvider>
