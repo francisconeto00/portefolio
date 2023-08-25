@@ -106,436 +106,443 @@ function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <ThemeProvider theme={theme}>
-        <div className={`container ${scrolling ? "scrolling" : ""}`}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              ml: {
-                xs: 1,
-                sm: 1,
-                md: 4,
-                ls: 4,
-                xl: 4,
-              },
-            }}
-          >
-            <Select
-              sx={{
-                "&:before": {
-                  borderColor: "white", // Cor da borda antes do seletor ser aberto
-                },
-                "&:after": {
-                  borderColor: "white", // Cor da borda após o seletor ser aberto
-                },
-                "&:hover:not(.Mui-disabled):before": {
-                  borderColor: "white", // Cor da borda ao passar o mouse
-                },
-                "& .MuiSelect-icon": {
-                  color: "white", // Cor do ícone
-                },
-                // Estilo do menu suspenso (opcional)
-                "& .MuiMenu-paper": {
-                  backgroundColor: "#333", // Cor de fundo do menu
-                  color: "white", // Cor do texto no menu
-                },
-              }}
-              variant="standard"
-              value={lang}
-              onChange={(e) => handleChangeLanguage(e.target.value)}
-            >
-              <MenuItem value={"pt"}>
-                <span className="fi fi-pt"> </span>
-              </MenuItem>
-
-              <MenuItem value={"en"}>
-                <span className="fi fi-gb"> </span>
-              </MenuItem>
-            </Select>
-
-            <Typography
-              sx={{
-                ml: {
-                  xs: 2,
-                  sm: 2,
-                  md: 12,
-                  ls: 12,
-                  xl: 12,
-                },
-              }}
-              align="center"
-              color="white"
-              fontSize="20px"
-            >
-              <b>Francisco Neto</b>
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              display: { md: "flex", xs: "none" },
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              pr: 2,
-              mr: 0,
-              color: "white",
-            }}
-          >
-            <Button
-              mr={4}
-              onClick={() => smoothScrollTo(about)}
-              sx={{ color: "white" }}
-            >
-              {t("about")}
-            </Button>
-
-            <Button
-              mr={4}
-              onClick={() => smoothScrollTo(tecs)}
-              sx={{ color: "white" }}
-            >
-              {t("tec")}
-            </Button>
-            <Button
-              mr={4}
-              onClick={() => smoothScrollTo(proj)}
-              sx={{ color: "white" }}
-            >
-              {t("proj")}
-            </Button>
-          </Box>
-          <Box sx={{ display: { md: "none", xs: "flex" } }}>
-            <Button
-              id="fade-button"
-              aria-controls={open ? "fade-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-              sx={{ color: "white" }}
-            >
-              <FontAwesomeIcon icon={faBars} />
-            </Button>
-            <Menu
-              id="fade-menu"
-              MenuListProps={{
-                "aria-labelledby": "fade-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              TransitionComponent={Fade}
-              PaperProps={{
-                sx: {
-                  backgroundColor: "white",
-                  color: "rgba(123, 45, 253, 1)",
-                },
-              }}
-            >
-              <MenuItem onClick={() => smoothScrollTo(about)}>
-                {t("about")}
-              </MenuItem>
-              <MenuItem onClick={() => smoothScrollTo(tecs)}>
-                {t("tec")}
-              </MenuItem>
-              <MenuItem onClick={() => smoothScrollTo(proj)}>
-                {t("proj")}
-              </MenuItem>
-            </Menu>
-          </Box>
-        </div>
-        <div className="title-container" ref={about}>
-          <Container
-            sx={{
-              py: {
-                xs: 10,
-                sm: 10,
-              },
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+        <Box sx={{ maxWidth: "100vw !important" }}>
+          <div className={`container ${scrolling ? "scrolling" : ""}`}>
             <Box
-              mt={3}
               sx={{
-                background: "rgba(255, 255, 255, 0.9)",
-                borderRadius: "10px",
-                boxShadow: {
-                  xs: "none",
-                  sm: "none",
-                  md: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
-                  ls: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
-                  xl: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
-                },
                 display: "flex",
-                flexDirection: {
-                  xs: "column",
-                  sm: "column",
-                  md: "row",
-                  ls: "row",
-                  xl: "row",
-                },
-                py: 4,
-                px: 2,
-                width: "100%",
-                justifyContent: {
-                  xs: "center",
-                  sm: "center",
-                  md: "space-between",
-                  ls: "space-between",
-                  xl: "space-between",
-                },
+                flexDirection: "row",
                 alignItems: "center",
+                ml: {
+                  xs: 1,
+                  sm: 1,
+                  md: 4,
+                  ls: 4,
+                  xl: 4,
+                },
               }}
             >
-              <Box
+              <Select
                 sx={{
-                  border: "3px solid rgba(123, 45, 253, 1)",
-                  borderRadius: "50%",
+                  "&:before": {
+                    borderColor: "white", // Cor da borda antes do seletor ser aberto
+                  },
+                  "&:after": {
+                    borderColor: "white", // Cor da borda após o seletor ser aberto
+                  },
+                  "&:hover:not(.Mui-disabled):before": {
+                    borderColor: "white", // Cor da borda ao passar o mouse
+                  },
+                  "& .MuiSelect-icon": {
+                    color: "white", // Cor do ícone
+                  },
+                  // Estilo do menu suspenso (opcional)
+                  "& .MuiMenu-paper": {
+                    backgroundColor: "#333", // Cor de fundo do menu
+                    color: "white", // Cor do texto no menu
+                  },
                 }}
+                variant="standard"
+                value={lang}
+                onChange={(e) => handleChangeLanguage(e.target.value)}
               >
-                <Avatar
-                  sx={{
-                    width: 300,
-                    height: 300,
-                  }}
-                  alt="profile"
-                  src={img}
-                />
-              </Box>
-              <Box
+                <MenuItem value={"pt"}>
+                  <span className="fi fi-pt"> </span>
+                </MenuItem>
+
+                <MenuItem value={"en"}>
+                  <span className="fi fi-gb"> </span>
+                </MenuItem>
+              </Select>
+
+              <Typography
                 sx={{
-                  width: {
-                    xs: "100%",
-                    sm: "100%",
-                    md: "70%",
-                    ls: "70%",
-                    xl: "70%",
+                  ml: {
+                    xs: 2,
+                    sm: 2,
+                    md: 12,
+                    ls: 12,
+                    xl: 12,
+                  },
+                }}
+                align="center"
+                color="white"
+                fontSize="20px"
+              >
+                <b>Francisco Neto</b>
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: { md: "flex", xs: "none" },
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                pr: 2,
+                mr: 0,
+                color: "white",
+              }}
+            >
+              <Button
+                mr={4}
+                onClick={() => smoothScrollTo(about)}
+                sx={{ color: "white" }}
+              >
+                {t("about")}
+              </Button>
+
+              <Button
+                mr={4}
+                onClick={() => smoothScrollTo(tecs)}
+                sx={{ color: "white" }}
+              >
+                {t("tec")}
+              </Button>
+              <Button
+                mr={4}
+                onClick={() => smoothScrollTo(proj)}
+                sx={{ color: "white" }}
+              >
+                {t("proj")}
+              </Button>
+            </Box>
+            <Box sx={{ display: { md: "none", xs: "flex" } }}>
+              <Button
+                id="fade-button"
+                aria-controls={open ? "fade-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+                sx={{ color: "white" }}
+              >
+                <FontAwesomeIcon icon={faBars} />
+              </Button>
+              <Menu
+                id="fade-menu"
+                MenuListProps={{
+                  "aria-labelledby": "fade-button",
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+                PaperProps={{
+                  sx: {
+                    backgroundColor: "white",
+                    color: "rgba(123, 45, 253, 1)",
                   },
                 }}
               >
-                <Typography
-                  align="center"
-                  mb={2}
-                  color="rgba(123, 45, 253, 1)"
-                  fontSize={{ xs: 25, md: 30 }}
-                >
-                  <b>{t("about")}</b>
-                </Typography>
-                <Typography fontSize={{ xs: 15, md: 20 }}>
-                  O meu nome é Francisco Neto, tenho 23 anos e sou natural de
-                  Santo Tirso. Sou apaixonado por tecnologia e desenvolvimento
-                  de software. Atualmente, trabalho como desenvolvedor frontend
-                  freelancer em projetos baseados em React.js.
-                </Typography>
-                <Typography fontSize={{ xs: 15, md: 20 }}>
-                  A minha formação académica passa pela Universidade do Minho,
-                  onde me encontro no último ano do Mestrado em Engenharia de
-                  Telecomunicações e Informática. Foi neste curso que desenvolvi
-                  o gosto pela programação, aprendizagem continua e diversos
-                  conhecimentos em redes e comunicações.
-                </Typography>
-              </Box>
+                <MenuItem onClick={() => smoothScrollTo(about)}>
+                  {t("about")}
+                </MenuItem>
+                <MenuItem onClick={() => smoothScrollTo(tecs)}>
+                  {t("tec")}
+                </MenuItem>
+                <MenuItem onClick={() => smoothScrollTo(proj)}>
+                  {t("proj")}
+                </MenuItem>
+              </Menu>
             </Box>
-          </Container>
-        </div>
+          </div>
+          <div className="title-container" ref={about}>
+            <Container
+              sx={{
+                py: {
+                  xs: 10,
+                  sm: 10,
+                },
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <Box
+                mt={3}
+                sx={{
+                  background: "rgba(255, 255, 255, 0.9)",
+                  borderRadius: "10px",
+                  boxShadow: {
+                    xs: "none",
+                    sm: "none",
+                    md: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
+                    ls: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
+                    xl: " 10px 10px 21px -3px rgba(0,0,0,0.75)",
+                  },
+                  display: "flex",
+                  flexDirection: {
+                    xs: "column",
+                    sm: "column",
+                    md: "row",
+                    ls: "row",
+                    xl: "row",
+                  },
+                  py: 4,
+                  px: 2,
+                  width: "100%",
+                  justifyContent: {
+                    xs: "center",
+                    sm: "center",
+                    md: "space-between",
+                    ls: "space-between",
+                    xl: "space-between",
+                  },
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    border: "3px solid rgba(123, 45, 253, 1)",
+                    borderRadius: "50%",
+                  }}
+                >
+                  <Avatar
+                    sx={{
+                      width: 300,
+                      height: 300,
+                    }}
+                    alt="profile"
+                    src={img}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "70%",
+                      ls: "70%",
+                      xl: "70%",
+                    },
+                  }}
+                >
+                  <Typography
+                    align="center"
+                    mb={2}
+                    color="rgba(123, 45, 253, 1)"
+                    fontSize={{ xs: 25, md: 30 }}
+                  >
+                    <b>{t("about")}</b>
+                  </Typography>
+                  <Typography fontSize={{ xs: 15, md: 20 }}>
+                    O meu nome é Francisco Neto, tenho 23 anos e sou natural de
+                    Santo Tirso. Sou apaixonado por tecnologia e desenvolvimento
+                    de software. Atualmente, trabalho como desenvolvedor
+                    frontend freelancer em projetos baseados em React.js.
+                  </Typography>
+                  <Typography fontSize={{ xs: 15, md: 20 }}>
+                    A minha formação académica passa pela Universidade do Minho,
+                    onde me encontro no último ano do Mestrado em Engenharia de
+                    Telecomunicações e Informática. Foi neste curso que
+                    desenvolvi o gosto pela programação, aprendizagem continua e
+                    diversos conhecimentos em redes e comunicações.
+                  </Typography>
+                </Box>
+              </Box>
+            </Container>
+          </div>
 
-        <div className="languages " ref={tecs}>
-          <Container
+          <div className="languages " ref={tecs}>
+            <Container
+              sx={{
+                py: {
+                  xs: 10,
+                  sm: 10,
+                },
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Grid
+                sx={{
+                  flexGrow: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "white",
+                }}
+                container
+                spacing={{ xs: 6, sm: 10, md: 12, ls: 12, xl: 12 }}
+              >
+                <Grid item>
+                  <img src={next} alt="next" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={react} alt="react" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={js} alt="js" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={ts} alt="ts" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img
+                    className="kimg"
+                    src={kotlin}
+                    alt="kotlin"
+                    width="100px"
+                  />
+                </Grid>
+                <Grid item>
+                  <img src={py} alt="py" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={scss} alt="scss" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={sc} alt="sc" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={css} alt="css" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={html} alt="html" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={java} alt="java" width="100px" />
+                </Grid>
+                <Grid item>
+                  <img src={c} alt="c" width="100px" />
+                </Grid>
+              </Grid>
+            </Container>
+          </div>
+
+          <div className="projects" ref={proj}>
+            <Carousel
+              slideSize="40%"
+              height={480}
+              slideGap="sm"
+              controlsOffset="xs"
+              dragFree
+              align={"start"}
+              withIndicators
+              w={{
+                base: "90%",
+                xs: "90%",
+                sm: "90%",
+                md: "90%",
+                lg: "90%",
+                xl: "70%",
+              }}
+              styles={{
+                control: {
+                  background: "rgba(123, 45, 253, 1)",
+                  opacity: "0.5",
+                  "&[data-inactive]": {
+                    opacity: 0,
+                    cursor: "default",
+                  },
+                },
+              }}
+              breakpoints={[
+                { maxWidth: "md", slideSize: "50%" },
+                { maxWidth: "sm", slideSize: "100%", slideGap: "0" },
+              ]}
+            >
+              {projects.map((p, index) => (
+                <Carousel.Slide key={p.title + index}>
+                  <Card
+                    sx={{
+                      height: "90%",
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Box>
+                        <Typography align="center" variant="h6" color={"black"}>
+                          {p.title}
+                        </Typography>
+                        <Typography>{p.discription}</Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        {p.languages.map((l, index) => (
+                          <img
+                            alt={l.name}
+                            key={l.name + index}
+                            src={l.img}
+                            width="30px"
+                          />
+                        ))}
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Carousel.Slide>
+              ))}
+            </Carousel>
+          </div>
+          <Box
             sx={{
-              py: {
-                xs: 10,
-                sm: 10,
-              },
+              borderTop: "1px solid white",
               width: "100%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              backgroundColor: "rgba(12, 12, 12, 255)",
+
+              padding: "10px 0",
+              zIndex: 1000,
             }}
           >
             <Grid
-              sx={{
-                flexGrow: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                color: "white",
-              }}
               container
-              spacing={{ xs: 6, sm: 10, md: 12, ls: 12, xl: 12 }}
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
             >
               <Grid item>
-                <img src={next} alt="next" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={react} alt="react" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={js} alt="js" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={ts} alt="ts" width="100px" />
-              </Grid>
-              <Grid item>
-                <img className="kimg" src={kotlin} alt="kotlin" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={py} alt="py" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={scss} alt="scss" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={sc} alt="sc" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={css} alt="css" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={html} alt="html" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={java} alt="java" width="100px" />
-              </Grid>
-              <Grid item>
-                <img src={c} alt="c" width="100px" />
-              </Grid>
-            </Grid>
-          </Container>
-        </div>
-
-        <div className="projects" ref={proj}>
-          <Carousel
-            slideSize="40%"
-            height={480}
-            slideGap="sm"
-            controlsOffset="xs"
-            dragFree
-            align={"start"}
-            withIndicators
-            w={{
-              base: "90%",
-              xs: "90%",
-              sm: "90%",
-              md: "90%",
-              lg: "90%",
-              xl: "70%",
-            }}
-            styles={{
-              control: {
-                background: "rgba(123, 45, 253, 1)",
-                opacity: "0.5",
-                "&[data-inactive]": {
-                  opacity: 0,
-                  cursor: "default",
-                },
-              },
-            }}
-            breakpoints={[
-              { maxWidth: "md", slideSize: "50%" },
-              { maxWidth: "sm", slideSize: "100%", slideGap: "0" },
-            ]}
-          >
-            {projects.map((p, index) => (
-              <Carousel.Slide key={p.title + index}>
-                <Card
-                  sx={{
-                    height: "90%",
-                  }}
+                <IconButton
+                  sx={{ color: "rgba(123, 45, 253, 1)" }}
+                  href="mailto:fdgneto@ubiwhere.com"
+                  target="_blank"
                 >
-                  <CardContent
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      height: "100%",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Box>
-                      <Typography align="center" variant="h6" color={"black"}>
-                        {p.title}
-                      </Typography>
-                      <Typography>{p.discription}</Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      {p.languages.map((l, index) => (
-                        <img
-                          alt={l.name}
-                          key={l.name + index}
-                          src={l.img}
-                          width="30px"
-                        />
-                      ))}
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Carousel.Slide>
-            ))}
-          </Carousel>
-        </div>
-        <Box
-          sx={{
-            borderTop: "1px solid white",
-            width: "100vw",
-            backgroundColor: "rgba(12, 12, 12, 255)",
-
-            padding: "10px 0",
-            zIndex: 1000,
-          }}
-        >
-          <Grid
-            container
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-          >
-            <Grid item>
-              <IconButton
-                sx={{ color: "rgba(123, 45, 253, 1)" }}
-                href="mailto:fdgneto@ubiwhere.com"
-                target="_blank"
-              >
-                <EmailIcon />
-              </IconButton>
+                  <EmailIcon />
+                </IconButton>
+              </Grid>
+              <Grid item>
+                <IconButton
+                  sx={{ color: "rgba(123, 45, 253, 1)" }}
+                  href="https://www.linkedin.com/in/francisco-neto-567a92241/"
+                  target="_blank"
+                >
+                  <LinkedInIcon />
+                </IconButton>
+              </Grid>
+              <Grid item>
+                <IconButton
+                  sx={{ color: "rgba(123, 45, 253, 1)" }}
+                  href="https://www.instagram.com/xico.netoo/"
+                  target="_blank"
+                >
+                  <InstagramIcon />
+                </IconButton>
+              </Grid>
             </Grid>
-            <Grid item>
-              <IconButton
-                sx={{ color: "rgba(123, 45, 253, 1)" }}
-                href="https://www.linkedin.com/in/francisco-neto-567a92241/"
-                target="_blank"
-              >
-                <LinkedInIcon />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                sx={{ color: "rgba(123, 45, 253, 1)" }}
-                href="https://www.instagram.com/xico.netoo/"
-                target="_blank"
-              >
-                <InstagramIcon />
-              </IconButton>
-            </Grid>
-          </Grid>
-          <Box
-            sx={{
-              textAlign: "center",
-              fontSize: "14px",
-              color: "rgba(123, 45, 253, 1)",
-              marginTop: "5px",
-            }}
-          >
-            Copyright &copy; Francisco Neto {currentYear}
+            <Box
+              sx={{
+                textAlign: "center",
+                fontSize: "14px",
+                color: "rgba(123, 45, 253, 1)",
+                marginTop: "5px",
+              }}
+            >
+              Copyright &copy; Francisco Neto {currentYear}
+            </Box>
           </Box>
         </Box>
       </ThemeProvider>
