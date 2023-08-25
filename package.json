@@ -2,6 +2,7 @@
   "name": "portefolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://francisconeto00.github.io",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -19,6 +20,7 @@
     "embla-carousel-autoplay": "^8.0.0-rc12",
     "embla-carousel-react": "^7.1.0",
     "flag-icons": "^6.11.0",
+    "gh-pages": "^6.0.0",
     "i18next": "^23.4.5",
     "material-ui-flags": "^1.2.4",
     "node-sass": "^7.0.3",
