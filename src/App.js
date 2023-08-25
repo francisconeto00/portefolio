@@ -102,6 +102,7 @@ function App() {
     i18n.changeLanguage(language);
     setLang(language);
   };
+  const currentYear = new Date().getFullYear();
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <ThemeProvider theme={theme}>
@@ -481,36 +482,62 @@ function App() {
               </Carousel.Slide>
             ))}
           </Carousel>
-          <footer>
-            <Container>
-              <Grid
-                container
-                justifyContent="center"
-                alignItems="center"
-                spacing={2}
-              >
-                <Grid item>
-                  <IconButton
-                    href="mailto:seuemail@example.com"
-                    target="_blank"
-                  >
-                    <EmailIcon />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton href="https://www.linkedin.com/" target="_blank">
-                    <LinkedInIcon />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton href="https://www.instagram.com/" target="_blank">
-                    <InstagramIcon />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            </Container>
-          </footer>
         </div>
+        <Box
+          sx={{
+            borderTop: "1px solid white",
+            width: "100vw",
+            backgroundColor: "rgba(12, 12, 12, 255)",
+
+            padding: "10px 0",
+            zIndex: 1000,
+          }}
+        >
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item>
+              <IconButton
+                sx={{ color: "rgba(123, 45, 253, 1)" }}
+                href="mailto:fdgneto@ubiwhere.com"
+                target="_blank"
+              >
+                <EmailIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                sx={{ color: "rgba(123, 45, 253, 1)" }}
+                href="https://www.linkedin.com/in/francisco-neto-567a92241/"
+                target="_blank"
+              >
+                <LinkedInIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                sx={{ color: "rgba(123, 45, 253, 1)" }}
+                href="https://www.instagram.com/xico.netoo/"
+                target="_blank"
+              >
+                <InstagramIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+          <Box
+            sx={{
+              textAlign: "center",
+              fontSize: "14px",
+              color: "rgba(123, 45, 253, 1)",
+              marginTop: "5px",
+            }}
+          >
+            Copyright &copy; Francisco Neto {currentYear}
+          </Box>
+        </Box>
       </ThemeProvider>
     </MantineProvider>
   );
